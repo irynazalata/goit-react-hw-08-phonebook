@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: solid 2px rgb(230, 229, 229);
+}
+.list {
+  list-style: none;
+  display: flex;
+}
+
+.listItem {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.listItem:not(:last-child) {
+  margin-right: 20px;
+}
+
+.listLink {
+  text-decoration: none;
+  color: #000000;
+}
+
+.listLink:hover {
+  color: #3544a9;
+}
+
+.listLinkActive {
+  color: #3544a9;
+}
