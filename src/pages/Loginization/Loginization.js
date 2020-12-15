@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import NavBar from '../../shared/NavBar/NavBar';
+import { connect } from 'react-redux';
+import { authOperations } from '../../redux/auth';
+import styles from './Loginization.module.css';
 
 class Loginization extends Component {
   state = {
@@ -21,7 +24,7 @@ class Loginization extends Component {
     return (
       <>
         <NavBar />
-        <div>
+        <div className={styles.container}>
           <h1>Login page</h1>
           <form onSubmit={this.handleSubmit}>
             <label>
@@ -36,8 +39,8 @@ class Loginization extends Component {
             <label>
               Password
               <input
-                type="email"
-                name="email"
+                type="password"
+                name="password"
                 value={password}
                 onChange={this.handleChange}
               />
@@ -50,4 +53,4 @@ class Loginization extends Component {
   }
 }
 
-export default Loginization;
+export default connect(null, { onLogin: authOperations.login })(Loginization);

@@ -1,15 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { authSelectors, authOperations } from '../../redux/auth';
+import { connect } from 'react-redux';
 import styles from './UserMenu.module.css';
 
-class UserMenu extends Component {
-  render() {
-    return (
-      <div className={styles.container}>
-        <p className={styles.text}>Email</p>
-        <button className={styles.btn}>Log out</button>
-      </div>
-    );
-  }
-}
+const UserMenu = ({ email, isAuthenticated, onLogout }) => {
+  return (
+    <div className={styles.container}>
+      <p className={styles.text}>
+        You are logged in as <span className={styles.span}>{email}</span>
+      </p>
+      <button type="button" onClick={onLogout} className={styles.btn}>
+        Logout
+      </button>
+    </div>
+  );
+};
 
-export default UserMenu;
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.isAuthenticated(state),
+  email: authSelectors.getUserEmail(state),
+});
+
+const mapDispatchToProps = {
+  onLogout: authOperations.logout,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

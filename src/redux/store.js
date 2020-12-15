@@ -6,16 +6,14 @@ import storage from 'redux-persist/lib/storage';
 
 import authReducer from './auth/authReducers';
 
-const persistConfig = {
+const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
-
 const rootReducer = {
-  auth: persistedReducer,
+  auth: persistReducer(authPersistConfig, authReducer),
   contacts: contactReducer,
   filter,
   loading,

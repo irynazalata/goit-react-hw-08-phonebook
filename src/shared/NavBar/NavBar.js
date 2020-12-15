@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
 import styles from './NavBar.module.css';
 import UserMenu from '../../components/UserMenu/UserMenu';
+import Loader from '../../shared/Loader/Loader';
 
 const links = [
   {
@@ -22,7 +25,7 @@ const links = [
   },
 ];
 
-const NavBar = () => {
+const NavBar = ({ isAuthenticated, email }) => {
   const items = links.map(({ to, name }) => (
     <li className={styles.listItem} key={to}>
       <NavLink
@@ -40,8 +43,14 @@ const NavBar = () => {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>{items}</ul>
-      <UserMenu />
+      {isAuthenticated && !email && <Loader />}
+      {isAuthenticated && email && <UserMenu />}
     </div>
   );
 };
-export default NavBar;
+
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.isAuthenticated(state),
+  email: authSelectors.getUserEmail(state),
+});
+export default connect(mapStateToProps)(NavBar);

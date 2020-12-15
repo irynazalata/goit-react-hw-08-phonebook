@@ -1,13 +1,18 @@
 .container {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .text {
   margin-right: 10px;
 }
 
+.span {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .btn {
-  width: 80px;
-  height: 30px;
+  width: 55px;
+  height: 25px;
 }
