@@ -1,13 +1,15 @@
 .container {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  align-items: baseline;
+  padding: 10px 0;
   border-bottom: solid 2px rgb(230, 229, 229);
 }
 .list {
   list-style: none;
   display: flex;
-  margin: 0;
+  margin: auto 0;
+  padding-left: 70px;
 }
 
 .listItem {

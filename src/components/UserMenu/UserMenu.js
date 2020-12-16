@@ -7,7 +7,8 @@ const UserMenu = ({ email, isAuthenticated, onLogout }) => {
   return (
     <div className={styles.container}>
       <p className={styles.text}>
-        You are logged in as <span className={styles.span}>{email}</span>
+        You are logged in as <br />
+        <span className={styles.span}>{email}</span>
       </p>
       <button type="button" onClick={onLogout} className={styles.btn}>
         Logout

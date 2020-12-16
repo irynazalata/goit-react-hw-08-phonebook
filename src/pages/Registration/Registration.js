@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import NavBar from '../../shared/NavBar/NavBar';
 import { connect } from 'react-redux';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
+import Notification from '../../shared/Notification/Notification';
 import styles from './Registration.module.css';
 
 class Registration extends Component {
@@ -26,6 +27,10 @@ class Registration extends Component {
       <>
         <NavBar />
         <div className={styles.container}>
+          <Notification
+            error={Boolean(this.props.error)}
+            message="Your registration failed. Try again"
+          ></Notification>
           <h1 className={styles.title}>Register page</h1>
           <form onSubmit={this.handleSubmit} className={styles.form}>
             <label className={styles.label}>
@@ -67,6 +72,10 @@ class Registration extends Component {
   }
 }
 
-export default connect(null, { onRegister: authOperations.register })(
-  Registration,
-);
+const mapStateToProps = state => ({
+  error: authSelectors.getErrorMessage(state),
+});
+
+export default connect(mapStateToProps, {
+  onRegister: authOperations.register,
+})(Registration);

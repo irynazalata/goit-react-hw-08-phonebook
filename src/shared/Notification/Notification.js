@@ -2,17 +2,18 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styles from './Notification.module.css';
 
-const Notification = ({ contactExists }) => {
+const Notification = ({ error, message }) => {
+  console.log(error);
   return (
     <CSSTransition
-      in={contactExists}
+      in={error}
       appear={true}
       timeout={250}
       classNames={styles}
       unmountOnExit
     >
       <div className={styles.container}>
-        <p className={styles.text}>Contact already exists!</p>
+        <p className={styles.text}>{message}</p>
       </div>
     </CSSTransition>
   );

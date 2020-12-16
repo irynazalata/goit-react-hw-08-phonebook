@@ -1,7 +1,7 @@
 .list {
   margin-bottom: 50px;
   list-style: square;
-  padding-left: 10px;
+  padding: 0;
 }
 .enter {
   opacity: 0;

@@ -16,16 +16,14 @@ const register = credentials => dispatch => {
   axios
     .post('/users/signup', credentials)
     .then(response => {
-      console.log(response.data);
       token.set(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
-    .catch(error => dispatch(authActions.registerError(error)));
+    .catch(error => dispatch(authActions.registerError(error.message)));
 };
 
 const login = credentials => dispatch => {
   dispatch(authActions.loginRequest());
-  // console.log(credentials);
   axios
     .post('/users/login', credentials)
     .then(response => {

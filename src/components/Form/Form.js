@@ -44,7 +44,6 @@ class Form extends Component {
     const { name, number, contactExists } = this.state;
     return (
       <>
-        <Notification contactExists={contactExists} />
         <form className={styles.form} onSubmit={this.handleSubmit}>
           <label className={styles.label}>
             Name
@@ -70,7 +69,12 @@ class Form extends Component {
               required
             />
           </label>
+
           <input type="submit" value="Add contact" className={styles.button} />
+          <Notification
+            error={contactExists}
+            message="Contact already exists!"
+          />
         </form>
       </>
     );

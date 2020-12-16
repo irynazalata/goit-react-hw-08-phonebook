@@ -24,6 +24,7 @@ const error = createReducer(null, {
   [authActions.loginError]: (_, { payload }) => payload,
   [authActions.logoutError]: (_, { payload }) => payload,
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
+  [authActions.logoutSuccess]: () => null,
 });
 
 export default combineReducers({
