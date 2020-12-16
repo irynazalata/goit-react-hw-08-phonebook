@@ -26,27 +26,29 @@ class Registration extends Component {
       <>
         <NavBar />
         <div className={styles.container}>
-          <h1>Register page</h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>
+          <h1 className={styles.title}>Register page</h1>
+          <form onSubmit={this.handleSubmit} className={styles.form}>
+            <label className={styles.label}>
               Name
               <input
                 type="text"
                 name="name"
                 value={name}
                 onChange={this.handleChange}
+                className={styles.input}
               />
             </label>
-            <label>
+            <label className={styles.label}>
               Email
               <input
                 type="email"
                 name="email"
                 value={email}
                 onChange={this.handleChange}
+                className={styles.input}
               />
             </label>
-            <label>
+            <label className={styles.label}>
               Password
               <input
                 type="password"
@@ -54,9 +56,10 @@ class Registration extends Component {
                 value={password}
                 placeholder="minimum 7 symbols"
                 onChange={this.handleChange}
+                className={styles.input}
               />
             </label>
-            <button>Register</button>
+            <button className={styles.button}>Register</button>
           </form>
         </div>
       </>

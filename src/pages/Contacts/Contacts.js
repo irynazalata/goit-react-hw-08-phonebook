@@ -6,13 +6,13 @@ import Loader from '../../shared/Loader/Loader';
 import Form from '../../components/Form/Form';
 import ContactsList from '../../components/ContactsList/ContactsList';
 import Filter from '../../components/Filter/Filter';
-import contactsOperations from '../../redux/contacts/contactsOperations';
-import contactsSelectors from '../../redux/contacts/contactsSelectors';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 class Contacts extends Component {
   componentDidMount() {
     this.props.fetchContacts();
   }
+
   render() {
     return (
       <>

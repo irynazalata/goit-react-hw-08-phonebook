@@ -25,27 +25,29 @@ class Loginization extends Component {
       <>
         <NavBar />
         <div className={styles.container}>
-          <h1>Login page</h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>
+          <h1 className={styles.title}>Login page</h1>
+          <form className={styles.form} onSubmit={this.handleSubmit}>
+            <label className={styles.label}>
               Email
               <input
                 type="email"
                 name="email"
                 value={email}
                 onChange={this.handleChange}
+                className={styles.input}
               />
             </label>
-            <label>
+            <label className={styles.label}>
               Password
               <input
                 type="password"
                 name="password"
                 value={password}
                 onChange={this.handleChange}
+                className={styles.input}
               />
             </label>
-            <button>Log in</button>
+            <button className={styles.button}>Log in</button>
           </form>
         </div>
       </>

@@ -1,5 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import PublicRoute from './components/PublicRoute/PublicRoute';
 import Title from './shared/Title/Title';
 import Loader from './shared/Loader/Loader';
 import Layout from './shared/Layout/Layout';
@@ -9,7 +11,7 @@ import Filter from './components/Filter/Filter';
 import contactsOperations from './redux/contacts/contactsOperations';
 import contactsSelectors from './redux/contacts/contactsSelectors';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import { authOperations } from './redux/auth';
 
@@ -22,9 +24,19 @@ class App extends Component {
     return (
       <Layout>
         <Suspense fallback={<Loader />}>
-          {routes.map((route, idx) => (
-            <Route key={idx} {...route}></Route>
-          ))}
+          <Switch>
+            {routes.map((route, idx) => {
+              return route.private ? (
+                <PrivateRoute key={idx} {...route} />
+              ) : (
+                <PublicRoute
+                  key={idx}
+                  {...route}
+                  restricted={route.restricted}
+                />
+              );
+            })}
+          </Switch>
         </Suspense>
       </Layout>
     );

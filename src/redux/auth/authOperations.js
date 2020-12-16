@@ -25,6 +25,7 @@ const register = credentials => dispatch => {
 
 const login = credentials => dispatch => {
   dispatch(authActions.loginRequest());
+  // console.log(credentials);
   axios
     .post('/users/login', credentials)
     .then(response => {
