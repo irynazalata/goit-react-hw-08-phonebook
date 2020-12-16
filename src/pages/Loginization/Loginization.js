@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import NavBar from '../../shared/NavBar/NavBar';
 import { connect } from 'react-redux';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
+import Notification from '../../shared/Notification/Notification';
 import styles from './Loginization.module.css';
 
 class Loginization extends Component {
@@ -21,10 +22,15 @@ class Loginization extends Component {
   };
   render() {
     const { email, password } = this.state;
+
     return (
       <>
         <NavBar />
         <div className={styles.container}>
+          <Notification
+            error={Boolean(this.props.error)}
+            message="You are not registered yet. Go to Register Page"
+          ></Notification>
           <h1 className={styles.title}>Login page</h1>
           <form className={styles.form} onSubmit={this.handleSubmit}>
             <label className={styles.label}>
@@ -55,4 +61,9 @@ class Loginization extends Component {
   }
 }
 
-export default connect(null, { onLogin: authOperations.login })(Loginization);
+const mapStateToProps = state => ({
+  error: authSelectors.getErrorMessage(state),
+});
+export default connect(mapStateToProps, { onLogin: authOperations.login })(
+  Loginization,
+);

@@ -3,7 +3,6 @@ import { CSSTransition } from 'react-transition-group';
 import styles from './Notification.module.css';
 
 const Notification = ({ error, message }) => {
-  console.log(error);
   return (
     <CSSTransition
       in={error}

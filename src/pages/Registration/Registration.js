@@ -27,10 +27,12 @@ class Registration extends Component {
       <>
         <NavBar />
         <div className={styles.container}>
-          <Notification
-            error={Boolean(this.props.error)}
-            message="Your registration failed. Try again"
-          ></Notification>
+          {typeof this.props.error === 'string' && (
+            <Notification
+              error={Boolean(this.props.error)}
+              message="Your registration failed. Try again"
+            ></Notification>
+          )}
           <h1 className={styles.title}>Register page</h1>
           <form onSubmit={this.handleSubmit} className={styles.form}>
             <label className={styles.label}>
