@@ -4,7 +4,7 @@
     "type": "git",
     "url": "git+https://github.com/irynazalata/goit-react-hw-08-phonebook.git"
   },
-  "homepage": "https://irynazalata.github.io/",
+  "homepage": "https://irynazalata.github.io/goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
